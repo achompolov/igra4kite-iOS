@@ -55,38 +55,48 @@ class FeaturedCollectionViewController: UICollectionViewController, UICollection
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return CellIdentifiers.allCases.count
+        return CellIdentifiers.allCases.count-1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let featuredCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.FeaturedCellIdentifier.rawValue, for: indexPath) as! FeaturedCell
         let categoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.CategoriesCellIdentifier.rawValue, for: indexPath) as! CategoriesCell
         let recommendedCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.RecommendedCellIdentifier.rawValue, for: indexPath) as! RecommendedCell
-        let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.EmptyCellIdentifier.rawValue, for: indexPath) as! EmptyCell
         
         // Configure the cells
         switch indexPath.row {
         case 0:
-            featuredCell.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
             //featuredCell.backgroundColor = UIColor.green
             return featuredCell
         case 1:
-            categoriesCell.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 150)
             //categoriesCell.backgroundColor = UIColor.brown
             return categoriesCell
         case 2:
-            recommendedCell.frame = CGRect(x: 0, y: 350, width: self.view.frame.width, height: 200)
             //categoriesCell.backgroundColor = UIColor.brown
             return recommendedCell
-        case 3:
-            emptyCell.frame = CGRect(x: 0, y: 550, width: self.view.frame.width, height: 100)
-            emptyCell.backgroundColor = UIColor.green
-            return emptyCell
         default:
             break
         }
         
         return featuredCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // CGSize for different cells
+        switch indexPath.row {
+        case 0:
+            return CGSize(width: UIScreen.main.bounds.width, height: 200)
+        case 1:
+            return CGSize(width: UIScreen.main.bounds.width, height: 150)
+        case 2:
+            return CGSize(width: UIScreen.main.bounds.width, height: 200)
+        case 3:
+            return CGSize(width: UIScreen.main.bounds.width, height: 100)
+        default:
+            break
+        }
+        
+        return CGSize(width: UIScreen.main.bounds.width, height: 80)
     }
 
     // MARK: UICollectionViewDelegate

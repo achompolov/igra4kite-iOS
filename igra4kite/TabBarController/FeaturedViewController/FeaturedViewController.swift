@@ -36,6 +36,7 @@ class FeaturedViewController: UIViewController {
         featuredControllerLayout.scrollDirection = .vertical
         let featuredController = FeaturedCollectionViewController(collectionViewLayout: featuredControllerLayout)
         guard let featuredView = featuredController.collectionView else { return }
+        self.addChild(featuredController)
         self.view.addSubview(featuredView)
         featuredView.translatesAutoresizingMaskIntoConstraints = false
         
