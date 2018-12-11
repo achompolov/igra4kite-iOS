@@ -152,11 +152,16 @@ class RecommendedCell: CollectionViewCell {
         return view
     }()
     
+    lazy var myCollectionView: UICollectionView = {
+        let collectionView = collectionViewController.collectionView
+        return collectionView!
+    }()
+    
     override func loadCellInterface() {
         // Add Subviews
         self.addSubview(title)
         self.addSubview(seeAll)
-        self.addSubview(collectionViewController.collectionView)
+        self.addSubview(myCollectionView)
         self.addSubview(lineView)
         
         // Add Constraints to the Subiews
@@ -164,8 +169,8 @@ class RecommendedCell: CollectionViewCell {
         addConstraintsWithFormat("V:|[v0(48)]", title)
         addConstraintsWithFormat("V:|[v0(48)]", seeAll)
         
-        addConstraintsWithFormat("H:|[v0]|", collectionViewController.collectionView)
-        addConstraintsWithFormat("V:|-48-[v0]|", collectionViewController.collectionView)
+        addConstraintsWithFormat("H:|[v0]|", myCollectionView)
+        addConstraintsWithFormat("V:|-48-[v0]|", myCollectionView)
     }
 }
 

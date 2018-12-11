@@ -25,10 +25,10 @@ class FeaturedCollectionViewController: UICollectionViewController, UICollection
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: CellIdentifiers.FeaturedCellIdentifier.rawValue)
-//        self.collectionView.register(CategoriesCell.self, forCellWithReuseIdentifier: CellIdentifiers.CategoriesCellIdentifier.rawValue)
-//        self.collectionView.register(RecommendedCell.self, forCellWithReuseIdentifier: CellIdentifiers.RecommendedCellIdentifier.rawValue)
-//        self.collectionView.register(EmptyCell.self, forCellWithReuseIdentifier: CellIdentifiers.EmptyCellIdentifier.rawValue)
+        self.collectionView.register(FeaturedCell.self, forCellWithReuseIdentifier: CellIdentifiers.FeaturedCellIdentifier.rawValue)
+        self.collectionView.register(CategoriesCell.self, forCellWithReuseIdentifier: CellIdentifiers.CategoriesCellIdentifier.rawValue)
+        self.collectionView.register(RecommendedCell.self, forCellWithReuseIdentifier: CellIdentifiers.RecommendedCellIdentifier.rawValue)
+        self.collectionView.register(EmptyCell.self, forCellWithReuseIdentifier: CellIdentifiers.EmptyCellIdentifier.rawValue)
 
         // Do any additional setup after loading the view.
         self.collectionView.backgroundColor = UIColor.white
@@ -55,12 +55,11 @@ class FeaturedCollectionViewController: UICollectionViewController, UICollection
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 22//CellIdentifiers.allCases.count
+        return 10//CellIdentifiers.allCases.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.FeaturedCellIdentifier.rawValue, for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.RecommendedCellIdentifier.rawValue, for: indexPath)
         return cell
         /*
         let featuredCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.FeaturedCellIdentifier.rawValue, for: indexPath) as! FeaturedCell
@@ -91,12 +90,11 @@ class FeaturedCollectionViewController: UICollectionViewController, UICollection
         }
         
         return featuredCell
- 
-    */
+ */
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 80)
+        return CGSize(width: UIScreen.main.bounds.width, height: 200)
     }
 
     // MARK: UICollectionViewDelegate
